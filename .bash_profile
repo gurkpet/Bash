@@ -1,8 +1,6 @@
 source ~/git-completion.bash
 source ~/.bash_private 2> /dev/null
 
-
-
 RED="\[\033[01;31m\]"
 YELLOW="\[\033[01;33m\]"
 GREEN="\[\033[01;32m\]"
@@ -17,12 +15,6 @@ gitbranch="\$(parse_git_branch)"
 input="$NO_COLOR$"
 
 parse_git_branch() {
-
-  USER_INFO=""
-  DEVELOP_STATUS=""
-  DEVELOP_MESSAGE=""
-  BRANCH_STATUS=""
-  CURRENT_BRANCH=""
 
   # Only bother with the git stuff if I am actually in a git repo
   if git rev-parse --git-dir > /dev/null 2>&1; then
@@ -135,7 +127,7 @@ pushToOrigin() {
 
 alias pushToOrigin=pushToOrigin
 
-pushBash() {
+updateBash() {
   CURRENT_DIR=$(pwd)
   cd $PATH_TO_YOUR_DEVELOPER_FOLDER/bash
   cp ~/.bash_profile $PATH_TO_YOUR_DEVELOPER_FOLDER/bash/.bash_profile
@@ -145,7 +137,7 @@ pushBash() {
   cd "$CURRENT_DIR"
 }
 
-alist pushBash=pushBash
+alias updateBash=updateBash
 
 export NVM_DIR=~/.nvm
 source ~/.nvm/nvm.sh
