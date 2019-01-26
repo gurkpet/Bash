@@ -58,7 +58,7 @@ parse_git_branch() {
       fi
 
       #if the current branch doesn't exist on origin push it and fetch it
-      if git fetch origin "$CURRENT_BRANCH" 2>&1 | grep "fatal: Couldn't find remote ref test2" > /dev/null; then
+      if git fetch origin "$CURRENT_BRANCH" 2>&1 | grep "fatal:" > /dev/null; then
         BRANCH_STATUS="$MAGENTA"
       else
         REMOTE=$(git rev-parse origin/$CURRENT_BRANCH)
