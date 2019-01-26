@@ -136,8 +136,8 @@ alias pushToOrigin=pushToOrigin
 
 pushBash() {
   CURRENT_DIR=$(pwd)
-  cd /Users/petergierke/Developer/Bash
-  cp ~/.bash_profile /Users/petergierke/Developer/Bash/.bash_profile
+  cd /Users/petergierke/Developer/bash
+  cp ~/.bash_profile /Users/petergierke/Developer/bash/.bash_profile
   git add .bash_profile
   git commit -m "latest bash update"
   git push origin master
