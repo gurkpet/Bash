@@ -144,6 +144,8 @@ updateBash() {
 
 alias updateBash=updateBash
 
+alias reshell="source ~/.bash_profile"
+
 export NVM_DIR=~/.nvm
 source ~/.nvm/nvm.sh
 
