@@ -34,18 +34,13 @@ parse_git_branch() {
 
     #if github is resolvable (internet connection present)
     if [ $? -eq 0 ]; then
-      #if the current branch doesn't exist on origin push it and fetch it
-      if git fetch origin "$CURRENT_BRANCH" 2>&1| grep "fatal: Couldn't find remote ref $CURRENT_BRANCH"; then
-        git push origin "$CURRENT_BRANCH"
-        git fetch origin "$CURRENT_BRANCH"
-      fi
 
+      LOCAL=$(git rev-parse @)
       #only evaluate upstream if upstream exists
       if git config remote.upstream.url > /dev/null; then
         git fetch upstream develop  --quiet
         UPSTREAM=${1:-'@{u}'}
 
-        LOCAL=$(git rev-parse @)
         REMOTE=$(git rev-parse upstream/develop)
         BASE=$(git merge-base @ upstream/develop)
 
@@ -70,28 +65,32 @@ parse_git_branch() {
         DEVELOP_MESSAGE="(branch)"
       fi
 
-      REMOTE=$(git rev-parse origin/$CURRENT_BRANCH)
-      BASE=$(git merge-base @ $CURRENT_BRANCH)
-
-      if git branch -a | egrep remotes/origin/develop 1> /dev/null; then
-        MAIN_BRANCH='develop'
-        else
-        MAIN_BRANCH='master'
-      fi
-
-      # Origin Matches MAIN_BRANCH
-      if [ $CURRENT_BRANCH = $MAIN_BRANCH ]; then
-        BRANCH_STATUS="$GREEN"
-      elif [ $LOCAL = $REMOTE ]; then
-        BRANCH_STATUS="$GREEN"
-      #Need to push to Origin
-      elif [ $LOCAL = $BASE ]; then
+      #if the current branch doesn't exist on origin push it and fetch it
+      if git fetch origin "$CURRENT_BRANCH" 2>&1 | grep "fatal: Couldn't find remote ref test2" > /dev/null; then
         BRANCH_STATUS="$MAGENTA"
-      #Ahead of Origin MAIN_BRANCH
-      elif [ $REMOTE = $BASE ]; then
-        BRANCH_STATUS="$YELLOW"
       else
-        BRANCH_STATUS="$RED"
+        REMOTE=$(git rev-parse origin/$CURRENT_BRANCH)
+        BASE=$(git merge-base @ $CURRENT_BRANCH)
+
+        if git branch -a | egrep remotes/origin/develop 1> /dev/null; then
+          MAIN_BRANCH='develop'
+          else
+          MAIN_BRANCH='master'
+        fi
+        # Origin Matches MAIN_BRANCH
+        if [ $CURRENT_BRANCH = $MAIN_BRANCH ]; then
+          BRANCH_STATUS="$GREEN"
+        elif [ $LOCAL = $REMOTE ]; then
+          BRANCH_STATUS="$GREEN"
+        #Need to push to Origin
+        elif [ $LOCAL = $BASE ]; then
+          BRANCH_STATUS="$MAGENTA"
+        # Ahead of Origin MAIN_BRANCH
+        elif [ $REMOTE = $BASE ]; then
+          BRANCH_STATUS="$YELLOW"
+        else
+          BRANCH_STATUS="$RED"
+        fi
       fi
     else
       DEVELOP_STATUS="$NO_COLOR"
