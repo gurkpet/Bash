@@ -8,18 +8,18 @@ If there is no internet avaiable to compare to github output will appear like th
 If connected to the internet it will change colors indicating current branchs state relative to origin
   output would look like this with colors changing for the `(branch)%master%` portion:
   `John-Smith's-MacBook-Pro@~/Developer/Bash(branch)%master%$`
-  -green indicates up to date
-  -yellow indicates the origin is newer than local
-  -magenta indicates origin is behind local
-  -red indicates there may be some weirdness between them
+  >green indicates up to date
+  >yellow indicates the origin is newer than local
+  >magenta indicates origin is behind local
+  >red indicates there may be some weirdness between them
 If the remote has an upstream additional details will be provided in the parens like this:
   `Peter-Gs-MacBook-Pro@~/Developer/front-end(up to date)develop`
   `Peter-Gs-MacBook-Pro@~/Developer/front-end(upstream updated)develop`
   Colors in the parens will also be provided to provide insite:
-  -green indicates up to date with upstream develop
-  -yellow indicates the upstream is newer than local
-  -magenta indicates upstream is behind local
-  -red indicates there may be some weirdness between them
+  >green indicates up to date with upstream develop
+  >yellow indicates the upstream is newer than local
+  >magenta indicates upstream is behind local
+  >red indicates there may be some weirdness between them
 
 ## aliases
 
