@@ -108,7 +108,7 @@ export GOOGLE_APP_ENGINE_DIR=/usr/local/google_appengine
 
 alias cleanUpBranches="git branch | grep -v "develop" | xargs git branch -D"
 
-updateBranch() {
+pullDevelop() {
   CURRENT_BRANCH=$(git branch 2> /dev/null|sed -e'/^[^*]/d' -e's/* \(.*\)/\1/')
   git checkout develop
   git pull --rebase upstream develop
