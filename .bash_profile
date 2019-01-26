@@ -136,7 +136,7 @@ updateBash() {
   git add .bash_profile
   git commit -m "latest bash update"
   git push origin master
-  git chekout $CURRENT_BRANCH
+  git checkout $CURRENT_BRANCH
   cd "$CURRENT_DIR"
 }
 
