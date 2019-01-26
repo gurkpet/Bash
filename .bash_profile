@@ -57,7 +57,7 @@ parse_git_branch() {
         DEVELOP_MESSAGE="(branch)"
       fi
 
-      #if the current branch doesn't exist on origin push it and fetch it
+      #if the current branch doesn't exist on origin branch status magenta (time to push)
       if git fetch origin "$CURRENT_BRANCH" 2>&1 | grep "fatal:" > /dev/null; then
         BRANCH_STATUS="$MAGENTA"
       else
@@ -91,6 +91,8 @@ parse_git_branch() {
     fi
   else
     USER_INFO="$user@$host"
+    DEVELOP_MESSAGE=""
+    CURRENT_BRANCH=""
   fi
 
   PS1="$USER_INFO$cwd$DEVELOP_STATUS$DEVELOP_MESSAGE$BRANCH_STATUS$CURRENT_BRANCH$input "
