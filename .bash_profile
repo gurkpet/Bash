@@ -1,4 +1,4 @@
-source ~/git-completion.bash
+source ~/git-completion.bash 2> /dev/null
 source ~/.bash_private 2> /dev/null
 
 RED="\[\033[01;31m\]"
