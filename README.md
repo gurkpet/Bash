@@ -30,12 +30,8 @@ If the remote has an upstream additional details will be provided in the parens 
 ## aliases
 cleanUpBranches - this will delete ever branch locally except the develop branch
 
-getLatestDevelop - this will merge develop into the current branch
-
-updateToDevelop - this will merge current branch with develop
-
-updateBranch - this will rebase develop from upstream and them merge it with current branch
+pullDevelop - this will rebase develop from upstream and them merge it with current branch
 
 pushToOrigin - this will push the current branch to origin
 
-pushBash - this is copy bashProfile to local git folder and then push it origin
+updateBash - this is copy bashProfile to local git folder and then push it origin
