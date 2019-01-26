@@ -2,6 +2,12 @@
 
 Designed to make knowing the state of your development easier
 
+## Instructions
+  You should create a file called .bash_private and store these two variables:  
+  YOUR_COMPUTER_USERNAME=`eg johnsmith`  
+  PATH_TO_YOUR_DEVELOPER_FOLDER=/Users/$YOUR_COMPUTER_USERNAME/`eg Developer`  
+  as well as any private stuff you don't want to push
+
 ## Terminal Propmt 
 If there is no internet avaiable to compare to github output will appear like this:  
   `John-Smith's-MacBook-Pro@~/Developer/Bash(no internet)%master%$`  
