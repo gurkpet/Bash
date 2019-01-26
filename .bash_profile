@@ -1,7 +1,7 @@
 source ~/git-completion.bash
 source ~/.bash_private 2> /dev/null
 
-YOUR_COMPUTER_USERNAME=
+
 
 RED="\[\033[01;31m\]"
 YELLOW="\[\033[01;33m\]"
@@ -107,6 +107,8 @@ parse_git_branch() {
 
 PROMPT_COMMAND=parse_git_branch
 
+
+
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
 export GOOGLE_APP_ENGINE_DIR=/usr/local/google_appengine
@@ -136,8 +138,8 @@ alias pushToOrigin=pushToOrigin
 
 pushBash() {
   CURRENT_DIR=$(pwd)
-  cd /Users/petergierke/Developer/bash
-  cp ~/.bash_profile /Users/petergierke/Developer/bash/.bash_profile
+  cd $PATH_TO_YOUR_DEVELOPER_FOLDER/bash
+  cp ~/.bash_profile $PATH_TO_YOUR_DEVELOPER_FOLDER/bash/.bash_profile
   git add .bash_profile
   git commit -m "latest bash update"
   git push origin master
@@ -148,3 +150,9 @@ alist pushBash=pushBash
 
 export NVM_DIR=~/.nvm
 source ~/.nvm/nvm.sh
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '$PATH_TO_YOUR_DEVELOPER_FOLDER/google-cloud-sdk/path.bash.inc' ]; then . '$PATH_TO_YOUR_DEVELOPER_FOLDER/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '$PATH_TO_YOUR_DEVELOPER_FOLDER/google-cloud-sdk/completion.bash.inc' ]; then . '$PATH_TO_YOUR_DEVELOPER_FOLDER/google-cloud-sdk/completion.bash.inc'; fi
