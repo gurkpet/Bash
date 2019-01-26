@@ -38,4 +38,4 @@ updateBranch - this will rebase develop from upstream and them merge it with cur
 
 pushToOrigin - this will push the current branch to origin
 
-pushBash - this is copy bashProfile to local git folder and then push it origin
+updateBash - this is copy bashProfile to local git folder and then push it origin
