@@ -1,6 +1,8 @@
 source ~/git-completion.bash
 source ~/.bash_private 2> /dev/null
 
+YOUR_COMPUTER_USERNAME=
+
 RED="\[\033[01;31m\]"
 YELLOW="\[\033[01;33m\]"
 GREEN="\[\033[01;32m\]"
@@ -146,9 +148,3 @@ alist pushBash=pushBash
 
 export NVM_DIR=~/.nvm
 source ~/.nvm/nvm.sh
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/petergierke/Developer/google-cloud-sdk/path.bash.inc' ]; then . '/Users/petergierke/Developer/google-cloud-sdk/path.bash.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/petergierke/Developer/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/petergierke/Developer/google-cloud-sdk/completion.bash.inc'; fi
