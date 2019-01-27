@@ -4,11 +4,7 @@ forkMagic() {
   fi
   
   git remote rename origin upstream
-  hub fork
-
-  USERNAME=$(git config user.name)
-  git remote rename $USERNAME origin
-  git remote set-url --push upstream no_push
+  hub fork --remote-name=origin
 }
 
 alias forkAndConfigOriginAndUpstream=forkMagic
