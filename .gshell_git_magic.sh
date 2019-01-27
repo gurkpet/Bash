@@ -1,5 +1,6 @@
 forkMagic() {
   if ! brew ls --versions hub > /dev/null; then
+    # docs @ https://hub.github.com/
     brew install hub
   fi
   
