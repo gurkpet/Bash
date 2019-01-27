@@ -2,6 +2,7 @@ forkMagic() {
   if ! brew ls --versions hub > /dev/null; then
     # docs @ https://hub.github.com/
     brew install hub
+    echo Hub is an extension produced by github.com
   fi
   
   git remote rename origin upstream
