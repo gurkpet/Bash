@@ -1,6 +1,3 @@
-source ~/git-completion.bash 2> /dev/null
-source ~/.bash_private 2> /dev/null
-
 RED="\[\033[01;31m\]"
 YELLOW="\[\033[01;33m\]"
 GREEN="\[\033[01;32m\]"
@@ -99,54 +96,3 @@ parse_git_branch() {
 }
 
 PROMPT_COMMAND=parse_git_branch
-
-
-
-export CLICOLOR=1
-export LSCOLORS=ExFxBxDxCxegedabagacad
-export GOOGLE_APP_ENGINE_DIR=/usr/local/google_appengine
-
-alias cleanUpBranches="git branch | grep -v "develop" | xargs git branch -D"
-
-pullDevelop() {
-  CURRENT_BRANCH=$(git branch 2> /dev/null|sed -e'/^[^*]/d' -e's/* \(.*\)/\1/')
-  git checkout develop
-  git pull --rebase upstream develop
-  git checkout $CURRENT_BRANCH
-  git merge develop
-}
-
-alias updateBranch=updateBranch
-
-pushToOrigin() {
-  CURRENT_BRANCH=$(git branch 2> /dev/null|sed -e'/^[^*]/d' -e's/* \(.*\)/\1/')
-  git push origin $CURRENT_BRANCH
-}
-
-alias pushToOrigin=pushToOrigin
-
-updateBash() {
-  CURRENT_DIR=$(pwd)
-  cd $PATH_TO_YOUR_DEVELOPER_FOLDER/bash
-  CURRENT_BRANCH=$(git branch 2> /dev/null|sed -e'/^[^*]/d' -e's/* \(.*\)/\1/')
-  git checkout master
-  cp ~/.bash_profile $PATH_TO_YOUR_DEVELOPER_FOLDER/bash/.bash_profile
-  git add .bash_profile
-  git commit -m "latest bash update"
-  git push origin master
-  git checkout $CURRENT_BRANCH
-  cd "$CURRENT_DIR"
-}
-
-alias updateBash=updateBash
-
-alias reshell="source ~/.bash_profile"
-
-export NVM_DIR=~/.nvm
-source ~/.nvm/nvm.sh
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '$PATH_TO_YOUR_DEVELOPER_FOLDER/google-cloud-sdk/path.bash.inc' ]; then . '$PATH_TO_YOUR_DEVELOPER_FOLDER/google-cloud-sdk/path.bash.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '$PATH_TO_YOUR_DEVELOPER_FOLDER/google-cloud-sdk/completion.bash.inc' ]; then . '$PATH_TO_YOUR_DEVELOPER_FOLDER/google-cloud-sdk/completion.bash.inc'; fi
