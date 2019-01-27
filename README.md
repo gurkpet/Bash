@@ -3,10 +3,7 @@
 Designed to make knowing the state of your development easier
 
 ## Instructions
-  You should create a file called .bash_private and store these two variables:  
-  YOUR_COMPUTER_USERNAME=`eg johnsmith`  
-  PATH_TO_YOUR_DEVELOPER_FOLDER=/Users/$YOUR_COMPUTER_USERNAME/`eg Developer`  
-  as well as any private stuff you don't want to push
+  Update `.gshell_private.sh.bak` by removing the `.bak` and then add source `/path/to/repo/.ghsell_master.sh` to your `.bash_profile` or `.bashrc`.  Then either open a new terminal or run `source ~/.bash_profile` to refresh your shell.  You should be good to go.
 
 ## Terminal Propmt 
 If there is no internet avaiable to compare to github output will appear like this:  
@@ -33,5 +30,3 @@ cleanUpBranches - this will delete ever branch locally except the develop branch
 pullDevelop - this will rebase develop from upstream and them merge it with current branch
 
 pushToOrigin - this will push the current branch to origin
-
-updateBash - this is copy bashProfile to local git folder and then push it origin
