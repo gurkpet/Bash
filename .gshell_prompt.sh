@@ -27,12 +27,15 @@ parse_git_branch() {
       LOCAL=$(git rev-parse @)
       #only evaluate upstream if upstream exists
       if git config remote.upstream.url > /dev/null; then
-        git fetch upstream develop  --quiet
+        if git branch -a | egrep remotes/upstream/develop 1> /dev/null; then
+          UPSTREAM_MAIN_BRANCH='develop'
+        else
+          UPSTREAM_MAIN_BRANCH='master'
+        fi
+        git fetch upstream $UPSTREAM_MAIN_BRANCH  --quiet
         UPSTREAM=${1:-'@{u}'}
-
-        REMOTE=$(git rev-parse upstream/develop)
-        BASE=$(git merge-base @ upstream/develop)
-
+        REMOTE=$(git rev-parse upstream/$UPSTREAM_MAIN_BRANCH)
+        BASE=$(git merge-base @ upstream/$UPSTREAM_MAIN_BRANCH)
         # Matches develop
         if [ $LOCAL = $REMOTE ]; then
           DEVELOP_STATUS="$GREEN"
