@@ -69,8 +69,8 @@ parse_git_branch() {
           else
           MAIN_BRANCH='master'
         fi
-        if [ $LOCAL = $GREEN ]; then
-          BRANCH_STATUS="$MAGENTA"
+        if [ $LOCAL = $REMOTE ]; then
+          BRANCH_STATUS="$GREEN"
         #Need to push to Origin
         elif [ $LOCAL = $BASE ]; then
           BRANCH_STATUS="$MAGENTA"
