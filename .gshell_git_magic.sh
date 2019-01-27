@@ -1,6 +1,7 @@
 forkMagic() {
   if ! brew ls --versions hub > /dev/null; then
     # docs @ https://hub.github.com/
+    echo Hub is an extension produced by github.com.  See at https://hub.github.com/
     brew install hub
     echo Hub is an extension produced by github.com.  See at https://hub.github.com/
   fi
