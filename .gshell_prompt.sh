@@ -46,8 +46,8 @@ parse_git_branch() {
           DEVELOP_MESSAGE="(upstream updated)"
         #Ahead of develop
         elif [ $REMOTE = $BASE ]; then
-          DEVELOP_STATUS="$MAGENTA"
-          DEVELOP_MESSAGE="(ahead of upstream)"
+          DEVELOP_STATUS="$GREEN"
+          DEVELOP_MESSAGE="(up to date)"
         else
           DEVELOP_STATUS="$RED"
           DEVELOP_MESSAGE="(upstream updated)"
