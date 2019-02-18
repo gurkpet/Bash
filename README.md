@@ -30,3 +30,7 @@ cleanUpBranches - this will delete ever branch locally except the develop branch
 pullDevelop - this will rebase develop from upstream and them merge it with current branch
 
 pushToOrigin - this will push the current branch to origin
+
+pushToLabs - will create a new branch called labs/$OldBranch/$currentYYYYMMDDHHMMSS, push it to upstream, switch back to original branch, and finanally delete the labs branch it created.
+
+reshell - will update your shell br resourcing `~/.bash_profile` to get access to any changes
