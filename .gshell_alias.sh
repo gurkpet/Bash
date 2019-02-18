@@ -8,6 +8,14 @@ pullDevelop() {
   git merge develop
 }
 
+pushToLabs() {
+  CURRENT_BRANCH=$(git branch 2> /dev/null|sed -e'/^[^*]/d' -e's/* \(.*\)/\1/')
+  labsBranch=labs/$CURRENT_BRANCH/$(date +%Y%m%d%H%M)
+  git checkout -b $labsBranch
+  git push upstream $labsBranch
+  git checkout $CURRENT_BRANCH
+}
+
 pushToOrigin() {
   CURRENT_BRANCH=$(git branch 2> /dev/null|sed -e'/^[^*]/d' -e's/* \(.*\)/\1/')
   git push origin $CURRENT_BRANCH
