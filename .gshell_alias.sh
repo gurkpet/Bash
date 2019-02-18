@@ -14,6 +14,7 @@ pushToLabs() {
   git checkout -b $labsBranch
   git push upstream $labsBranch
   git checkout $CURRENT_BRANCH
+  git branch -D $labsBranch
 }
 
 pushToOrigin() {
