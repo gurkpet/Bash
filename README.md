@@ -3,7 +3,7 @@
 Designed to make knowing the state of your development easier
 
 ## Instructions
-  Update `.gshell_private.sh.bak` by removing the `.bak` and then add source `/path/to/repo/.ghsell_master.sh` to your `.bash_profile` or `.bashrc`.  Then either open a new terminal or run `source ~/.bash_profile` to refresh your shell.  You should be good to go.
+  Update `.gshell_private.sh.bak` by removing the `.bak` and then add source `/path/to/repo/.gshell_master.sh` to your `.bash_profile` or `.bashrc`.  Then either open a new terminal or run `source ~/.bash_profile` to refresh your shell.  You should be good to go.
 
 ## Terminal Propmt 
 If there is no internet avaiable to compare to github output will appear like this:  
