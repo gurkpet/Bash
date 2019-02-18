@@ -34,3 +34,5 @@ pushToOrigin - this will push the current branch to origin
 pushToLabs - will create a new branch called labs/$OldBranch/$currentYYYYMMDDHHMMSS, push it to upstream, switch back to original branch, and finanally delete the labs branch it created.
 
 reshell - will update your shell br resourcing `~/.bash_profile` to get access to any changes
+
+forkAndConfigOriginAndUpstream - will fork the origin repo to your own github, rename origin upstream and call the forked repo origin (uses github which will require your login)
