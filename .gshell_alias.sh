@@ -22,6 +22,11 @@ pushToOrigin() {
   git push origin $CURRENT_BRANCH
 }
 
+clearDocker() {
+  docker stop $(docker ps -a -q)
+  docker rm $(docker ps -a -q)
+}
+
 alias pushToOrigin=pushToOrigin
 
 alias reshell="source ~/.bash_profile"
