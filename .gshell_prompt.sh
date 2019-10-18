@@ -26,16 +26,16 @@ parse_git_branch() {
 
       LOCAL=$(git rev-parse @)
       #only evaluate upstream if upstream exists
-      if git config remote.upstream.url > /dev/null; then
-        if git branch -a | egrep remotes/upstream/develop 1> /dev/null; then
+      if git config remote.origin.url > /dev/null; then
+        if git branch -a | egrep remotes/origin/develop 1> /dev/null; then
           UPSTREAM_MAIN_BRANCH='develop'
         else
           UPSTREAM_MAIN_BRANCH='master'
         fi
-        git fetch upstream $UPSTREAM_MAIN_BRANCH  --quiet
+        git fetch origin $UPSTREAM_MAIN_BRANCH  --quiet
         UPSTREAM=${1:-'@{u}'}
-        REMOTE=$(git rev-parse upstream/$UPSTREAM_MAIN_BRANCH)
-        BASE=$(git merge-base @ upstream/$UPSTREAM_MAIN_BRANCH)
+        REMOTE=$(git rev-parse origin/$UPSTREAM_MAIN_BRANCH)
+        BASE=$(git merge-base @ origin/$UPSTREAM_MAIN_BRANCH)
         # Matches develop
         if [ $LOCAL = $REMOTE ]; then
           DEVELOP_STATUS="$GREEN"
@@ -43,18 +43,18 @@ parse_git_branch() {
         #Need to pull
         elif [ $LOCAL = $BASE ]; then
           DEVELOP_STATUS="$YELLOW"
-          DEVELOP_MESSAGE="(upstream updated)"
+          DEVELOP_MESSAGE="(master updated)"
         #Ahead of develop
         elif [ $REMOTE = $BASE ]; then
           DEVELOP_STATUS="$GREEN"
           DEVELOP_MESSAGE="(up to date)"
         else
           DEVELOP_STATUS="$RED"
-          DEVELOP_MESSAGE="(upstream updated)"
+          DEVELOP_MESSAGE="(master updated)"
         fi
       else
         DEVELOP_STATUS="$GREEN"
-        DEVELOP_MESSAGE="(branch)"
+        DEVELOP_MESSAGE="(master matched)"
       fi
 
       #if the current branch doesn't exist on origin branch status magenta (time to push)

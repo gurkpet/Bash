@@ -2,20 +2,28 @@ alias cleanUpBranches="git branch | grep -v "develop" | xargs git branch -D"
 
 pullDevelop() {
   CURRENT_BRANCH=$(git branch 2> /dev/null|sed -e'/^[^*]/d' -e's/* \(.*\)/\1/')
-  git checkout develop
-  git pull --rebase upstream develop
+  git checkout master
+  git pull --rebase origin master
   git checkout $CURRENT_BRANCH
-  git merge develop
+  git merge master
 }
 
-pushToLabs() {
-  CURRENT_BRANCH=$(git branch 2> /dev/null|sed -e'/^[^*]/d' -e's/* \(.*\)/\1/')
-  labsBranch=labs/$CURRENT_BRANCH/$(date +%Y%m%d%H%M)
-  git checkout -b $labsBranch
-  git push upstream $labsBranch
-  git checkout $CURRENT_BRANCH
-  git branch -D $labsBranch
+newBranch() {
+  COMMIT_PREFIX=$(echo $1 | cut -c1-9)
+  SISU_TAG=$(echo $COMMIT_PREFIX | cut -c1-4)
+  JIRA_NUMBER=$(echo $COMMIT_PREFIX | cut -c6-9)
+  if [ "$SISU_TAG" != "SISU" ]
+  then
+    echo "error: Must start with 'SISU' (eg: SISU-####)"
+  elif [[ $JIRA_NUMBER =~ [^[:digit:]] ]]
+  then 
+    echo "error: Must have a valid 4 digit number (eg: SISU-####)'"
+  else
+    git checkout -b $@
+    git commit --allow-empty -m $@
+  fi
 }
+
 
 pushToOrigin() {
   CURRENT_BRANCH=$(git branch 2> /dev/null|sed -e'/^[^*]/d' -e's/* \(.*\)/\1/')
